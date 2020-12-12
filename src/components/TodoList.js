@@ -13,7 +13,7 @@ const TodoList = ({items, clearItems, handleDelete, handleEdit}) => {
                 handleEdit={() => handleEdit(item.id)} 
             />)}
 
-            <button type="button" className="btn btn-danger text-uppercase mt-5 btn-block">Clear Lists</button>
+            <button type="button" className="btn btn-danger text-uppercase mt-5 btn-block" onClick={clearItems}>Clear Lists</button>
         </ul>
     )
 }

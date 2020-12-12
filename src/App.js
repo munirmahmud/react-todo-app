@@ -17,10 +17,6 @@ class App extends Component {
         });
     };
 
-    handleEdit = (e) => {
-        
-    };
-
     handleSubmit = (e) => {
         e.preventDefault();
 
@@ -39,16 +35,22 @@ class App extends Component {
         });
     };
     
-    editItem = (id) => {
-        
+    handleEdit = (id) => {
+        console.log('Edit', id);
     };
 
-    clearItems() {
-        
+    clearItems = () => {
+        this.setState({
+            items: []
+        });
     };
 
     handleDelete = (id) => {
-        
+        const filteredItem = this.state.items.filter(item => item.id !== id);
+
+        this.setState({
+            items: filteredItem
+        });
     };
 
     render() {
