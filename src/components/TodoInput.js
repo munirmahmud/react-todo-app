@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaBook } from 'react-icons/fa';
 
-const TodoInput = ({item, handleChange, handleSubmit, editItem}) => {
+const TodoInput = (props) => {
+    const {item, handleChange, handleSubmit, editItem} = props;
+    
     return (
         <div className="card card-body my-3">
             <form onSubmit={handleSubmit}>

@@ -1,59 +1,80 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 
-const App = () => {
-    const [items, setItems] = useState({
-        todoItems: [{id: 1, title: 'New item'}, {id: 2, title: 'Another Item'}],
+class App extends Component {
+    state = {
+        items: [],
         id: uuidv4(),
-        todoItem: "",
+        item: "",
         editItem: false,
-    });
+    };
 
-    const handleChange = (e) => {
-        
+    handleChange = (e) => {
+        this.setState({
+            item: e.target.value
+        });
     };
-    const handleEdit = (e) => {
-        
-    };
-    const handleSubmit = (e) => {
-        
-    };
-    const editItem = id => {
+
+    handleEdit = (e) => {
         
     };
 
-    const clearItems = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        const newItem = {
+            id: this.state.id,
+            title: this.state.item,
+        };
+
+        const updatedItems = [...this.state.items, newItem];
+        
+        this.setState({
+            items: updatedItems,
+            item: '',
+            id: uuidv4(),
+            editItem: false
+        }, () => console.log(this.state));
+    };
+    
+    editItem = (id) => {
         
     };
 
-    const handleDelete = id => {
+    clearItems() {
         
     };
 
-    return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6 offset-3">
-                    <h3 className="text-center text-uppercase">Todo App</h3>
-                    
-                    <TodoInput
-                        item={items.todoItem}
-                        handleChange={handleChange}
-                        handleSubmit={handleSubmit}
-                        editItem={editItem}
-                    />
+    handleDelete = (id) => {
+        
+    };
 
-                    <TodoList 
-                    items={items} 
-                    clearItems={clearItems} 
-                    handleDelete={handleDelete} 
-                    handleEdit={handleEdit} />
+    render() {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6 offset-3">
+                        <h3 className="text-center text-uppercase">Todo App</h3>
+                        
+                        <TodoInput
+                            item={this.state.item}
+                            handleChange={this.handleChange}
+                            handleSubmit={this.handleSubmit}
+                            editItem={this.editItem}
+                        />
+    
+                        <TodoList 
+                        items={this.items} 
+                        clearItems={this.clearItems} 
+                        handleDelete={this.handleDelete} 
+                        handleEdit={this.handleEdit} />
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
-export default App
+export default App;
