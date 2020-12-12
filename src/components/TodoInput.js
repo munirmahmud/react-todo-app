@@ -23,7 +23,7 @@ const TodoInput = (props) => {
                     />
                 </div>
 
-                <button className="btn btn-block btn-primary mt-3">Add Item</button>
+                <button className={`btn btn-block btn-${editItem ? 'success' : 'primary'} mt-3`}>{editItem ? "Update Item" : "Add Item"}</button>
             </form>
         </div>
     )

@@ -20,6 +20,8 @@ class App extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
+        if(this.state.item === '') return;
+
         const newItem = {
             id: this.state.id,
             title: this.state.item,
@@ -36,7 +38,15 @@ class App extends Component {
     };
     
     handleEdit = (id) => {
-        console.log('Edit', id);
+        const filteredItem = this.state.items.filter(item => item.id !== id);
+        const selectedItem = this.state.items.find(item => item.id === id);
+
+        this.setState({
+            items: filteredItem,
+            item: selectedItem.title,
+            id: id,
+            editItem: true,
+        });
     };
 
     clearItems = () => {
@@ -64,7 +74,7 @@ class App extends Component {
                             item={this.state.item}
                             handleChange={this.handleChange}
                             handleSubmit={this.handleSubmit}
-                            editItem={this.editItem}
+                            editItem={this.state.editItem}
                         />
     
                         <TodoList 
