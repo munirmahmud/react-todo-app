@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-const Todo = () => {
+const Todo = ({item, handleDelete, handleEdit}) => {
     return (
-        <div>
-            Todo Item
-        </div>
+        <li className="list-group-item text-capitalize">
+            <h6>{item}</h6>
+        </li>
     )
 }
 

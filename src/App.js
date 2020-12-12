@@ -36,7 +36,7 @@ class App extends Component {
             item: '',
             id: uuidv4(),
             editItem: false
-        }, () => console.log(this.state));
+        });
     };
     
     editItem = (id) => {
@@ -66,7 +66,7 @@ class App extends Component {
                         />
     
                         <TodoList 
-                        items={this.items} 
+                        items={this.state.items} 
                         clearItems={this.clearItems} 
                         handleDelete={this.handleDelete} 
                         handleEdit={this.handleEdit} />
